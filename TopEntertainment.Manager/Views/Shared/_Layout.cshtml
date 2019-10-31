@@ -39,24 +39,33 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Transaction" asp-action="Index">轉移紀錄</a>
                 </li>
-                @*
-                    <li class="nav-item">
-                        <div class="accordion" id="menu-accordion-report">
-                            <div class="accordion-head" id="menu-accordion-report-head">
-                                <a href="#" data-toggle="collapse" data-target="#menu-accordion-report-content" aria-expanded="false" aria-controls="menu-accordion-report-content">統計報表</a>
-                            </div>
-
-                            <div class="acoordion-content collapse" id="menu-accordion-report-content" aria-labelledby="menu-accordion-report-head" data-parent="#menu-accordion-report">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-controller="" asp-action="Index">會員報表</a>
-                                        <a class="nav-link" asp-controller="" asp-action="Index">充值兌換</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <li class="nav-item">
+                    <div class="accordion" id="menu-accordion-report">
+                        <div class="accordion-head" id="menu-accordion-report-head">
+                            <a href="#" data-toggle="collapse" data-target="#menu-accordion-report-content" aria-expanded="false" aria-controls="menu-accordion-report-content">統計報表</a>
                         </div>
-                    </li>
-                *@
+
+                        <div class="acoordion-content collapse" id="menu-accordion-report-content" aria-labelledby="menu-accordion-report-head" data-parent="#menu-accordion-report">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">會員報表</a>
+                                    <a class="nav-link disabled" href="#">充值兌換</a>
+                                    <a class="nav-link disabled" href="#">首頁流量</a>
+                                    <a class="nav-link disabled" href="#">第三方遊戲</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">活動管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">版面配置</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">第三方遊戲管理</a>
+                </li>
             </ul>
         </aside>
 
