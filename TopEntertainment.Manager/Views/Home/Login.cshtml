@@ -1,0 +1,60 @@
+﻿@model AdministratorMD
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Top Entertainment</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/jquery-datatable/css/jquery.datatables.min.css" />
+    <link rel="stylesheet" href="~/lib/icon/css/icon.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/js/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/js/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-datatable/js/jquery.datatables.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/util.js"></script>
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+    <div class="common-background">
+        <div class="common-overlay">
+            <img class="common-logo" src="~/images/logo.jpg"/>
+
+            <form class="login-form" asp-controller="Home" asp-action="Login" method="post">
+                <div>
+                    <input asp-for="Account" />
+                    <div>
+                        <span class="text-danger" asp-validation-for="Account"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <input asp-for="Password" />
+                    <div>
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+                </div>
+
+                <div>
+                    <input type="submit" value="送出"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

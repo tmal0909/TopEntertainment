@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TopEntertainment.Database;
 using TopEntertainment.Manager.MetaData;
-using TopEntertainment.Manager.Models;
-using TopEntertainment.Database;
 
 namespace TopEntertainment.Manager.Controllers
 {
@@ -61,6 +56,13 @@ namespace TopEntertainment.Manager.Controllers
             }
 
             return RedirectToAction("Index", "Member");
+        }
+
+        public IActionResult Error(string message = "")
+        {
+            ViewBag.ErrorMessage = message;
+
+            return View();
         }
     }
 }

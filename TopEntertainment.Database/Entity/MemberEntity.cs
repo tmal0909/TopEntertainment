@@ -22,6 +22,10 @@ namespace TopEntertainment.Database.Entity
         public string Password { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(12,4)")]
+        public decimal Integration { get; set; }
+
+        [Required]
         [Column(TypeName = "nvarchar(50)")]
         public string Identity { get; set; }
 
@@ -50,8 +54,6 @@ namespace TopEntertainment.Database.Entity
         [Column(TypeName = "datetime")]
         public DateTime UtcUpdateTime { get; set; }
 
-        public List<TransferRecordEntity> GiverTransferRecords { get; set; }
-
-        public List<TransferRecordEntity> ReceiverTransferRecords { get; set; }
+        public List<TransferRecordEntity> TransferRecords { get; set; }
     }
 }

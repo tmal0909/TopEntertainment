@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TopEntertainment.Database.Enum;
 
 namespace TopEntertainment.Database.Entity
 {
@@ -17,29 +18,30 @@ namespace TopEntertainment.Database.Entity
         public string TransactionId { get; set; }
 
         [Required]
-        [Column(TypeName = "int")]
-        public int Amount { get; set; }
+        [Column(TypeName = "smallint")]
+        public TransferTypeEnum Type { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(12,4)")]
+        public decimal Integration { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string Note { get; set; }
+
+        [Required]
+        [Column(TypeName ="int")]
+        public int MemberId { get; set; }
 
         [Required]
         [Column(TypeName = "int")]
-        public int GiverId { get; set; }
-
-        [Required]
-        [Column(TypeName = "int")]
-        public int ReceiverId { get; set; }
-
-        [Required]
-        [Column(TypeName = "int")]
-        public int OperatorID { get; set; }
+        public int OperatorId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Required]
         [Column(TypeName = "datetime")]
         public DateTime UtcUpdateTime { get; set; }
 
-        public MemberEntity Giver { get; set; }
-
-        public MemberEntity Receiver { get; set; }
+        public MemberEntity Member { get; set; }
 
         public AdministratorEntity Operator { get; set; }
     }

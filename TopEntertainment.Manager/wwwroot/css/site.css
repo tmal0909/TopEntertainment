@@ -1,56 +1,94 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿/* General */
+html, body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+header {
+    background: linear-gradient(45deg, black, #696060de);
+    color: #ceefed;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 8px 30px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+footer {
+    background: linear-gradient(45deg, #696060de, black);
+    color: #ceefed;
+    text-align: center;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 8px 30px;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+/* Common */
+.common-background {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+.common-overlay {
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.common-logo {
+    width: 60px;
+    height: 60px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+
+/* Main */
+.main-frame {
+    height: calc(100% - 76px);
 }
+
+    .main-frame aside {
+        width: 200px;
+        height: 100%;
+        float: left;
+        padding: 10px;
+    }
+
+        .main-frame aside .accordion {
+            padding: 0.5rem 1rem;
+        }
+
+        .main-frame aside .acoordion-content {
+            margin-top: 10px;
+        }
+
+    .main-frame article {
+        width: calc(100% - 200px);
+        height: 100%;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+/* Bootstrap */
+.breadcrumb {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.col-form-label {
+    font-size: 1rem;
+}
+
+
+/* DataTable */
+.dataTables_button {
+    display: inline-block;
+}
+
+    .dataTables_button .icon-create {
+        font-size: 23px;
+    }

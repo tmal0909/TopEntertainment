@@ -3,77 +3,71 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TopEntertainment.Manager</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
-    </environment>
+    <title>TopEntertainment</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/jquery-datatable/css/jquery.datatables.min.css" />
+    <link rel="stylesheet" href="~/lib/icon/css/icon.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/js/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/js/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-datatable/js/jquery.datatables.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/util.js"></script>
+    <script src="~/js/site.js"></script>
+
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TopEntertainment.Manager</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">使用者管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">管理者管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">管理者管理</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <span>Top Entertainment</span>
+        <a class="float-right" asp-controller="Home" asp-action="Logout">登出</a>
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - TopEntertainment.Manager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <section class="main-frame">
+        <aside>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Administrator" asp-action="Index">管理者管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Member" asp-action="Index">會員管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Transaction" asp-action="Index">轉移紀錄</a>
+                </li>
+                @*
+                    <li class="nav-item">
+                        <div class="accordion" id="menu-accordion-report">
+                            <div class="accordion-head" id="menu-accordion-report-head">
+                                <a href="#" data-toggle="collapse" data-target="#menu-accordion-report-content" aria-expanded="false" aria-controls="menu-accordion-report-content">統計報表</a>
+                            </div>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+                            <div class="acoordion-content collapse" id="menu-accordion-report-content" aria-labelledby="menu-accordion-report-head" data-parent="#menu-accordion-report">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="" asp-action="Index">會員報表</a>
+                                        <a class="nav-link" asp-controller="" asp-action="Index">充值兌換</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                *@
+            </ul>
+        </aside>
+
+        <article>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </article>
+    </section>
+
+    <footer>&copy; Motivators 2019</footer>
 
     @RenderSection("Scripts", required: false)
 </body>

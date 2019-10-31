@@ -5,7 +5,7 @@ using TopEntertainment.Database.Entity;
 
 namespace TopEntertainment.Manager.MetaData
 {
-    public class AdministratorMD
+    public class MemberMD
     {
         [HiddenInput]
         public int Id { get; set; }
@@ -20,6 +20,8 @@ namespace TopEntertainment.Manager.MetaData
         [StringLength(50, ErrorMessage = "資料長度過長，請重新輸入")]
         [Display(Name = "密碼", Prompt = "請輸入密碼")]
         public string Password { get; set; }
+
+        public decimal Integration { get; set; }
 
         [Required(ErrorMessage = "請輸入身分證字號")]
         [StringLength(50, ErrorMessage = "資料長度過長，請重新輸入")]
@@ -45,14 +47,15 @@ namespace TopEntertainment.Manager.MetaData
 
         public int Role { get; set; }
 
-        
-        public static AdministratorMD ToMetaData(AdministratorEntity entity)
+
+        public static MemberMD ToMetaData(MemberEntity entity)
         {
-            return new AdministratorMD
+            return new MemberMD
             {
                 Id = entity.Id,
                 Account = entity.Account,
                 Password = entity.Password,
+                Integration = entity.Integration,
                 Identity = entity.Identity,
                 Name = entity.Name,
                 Birthday = entity.Birthday,
@@ -60,15 +63,16 @@ namespace TopEntertainment.Manager.MetaData
                 Address = entity.Address,
                 Role = entity.Role
             };
-        } 
+        }
 
-        public AdministratorEntity ToEntity()
+        public MemberEntity ToEntity()
         {
-            return new AdministratorEntity
+            return new MemberEntity
             {
                 Id = this.Id,
                 Account = this.Account,
                 Password = this.Password,
+                Integration = this.Integration,
                 Identity = this.Identity,
                 Name = this.Name,
                 Birthday = DateTime.UtcNow.AddHours(8),

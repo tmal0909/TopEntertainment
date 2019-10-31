@@ -15,11 +15,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TopEntertainment.Database\TopEntertainment.Database.csproj" />
+    <ProjectReference Include="..\TopEntertainment.Extension\TopEntertainment.Extension.csproj" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="Views\Home\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

@@ -8,11 +8,11 @@ namespace TopEntertainment.Database
     {
         #region DbSet
 
-        public DbSet<AdministratorEntity> Administrators;
+        public DbSet<AdministratorEntity> Administrators { get; set; }
 
-        public DbSet<MemberEntity> Members;
+        public DbSet<MemberEntity> Members { get; set; }
 
-        public DbSet<TransferRecordEntity> TransferRecords;
+        public DbSet<TransferRecordEntity> TransferRecords { get; set; }
 
         #endregion
 
@@ -42,9 +42,8 @@ namespace TopEntertainment.Database
             modelBuilder.Entity<TransferRecordEntity>().Property(x => x.UtcUpdateTime).HasDefaultValueSql("getutcdate()");
 
             // Define Relation
-            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Giver).WithMany(x => x.GiverTransferRecords).HasForeignKey(x => x.GiverId).OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Receiver).WithMany(x => x.ReceiverTransferRecords).HasForeignKey(x => x.ReceiverId).OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Operator).WithMany(x => x.TransferRecord).IsRequired().HasForeignKey(x => x.OperatorID).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Member).WithMany(x => x.TransferRecords).HasForeignKey(x => x.MemberId);
+            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Operator).WithMany(x => x.TransferRecord).HasForeignKey(x => x.OperatorId);
 
             // Define Seed Data
             modelBuilder.Entity<AdministratorEntity>().HasData(new AdministratorEntity {
@@ -53,7 +52,7 @@ namespace TopEntertainment.Database
                 Password = "Dev",
                 Identity = "A123456789",
                 Name = "Developer",
-                Birthday = new DateTime(1990, 1, 1),
+                Birthday = new DateTime(2019, 1, 1),
                 Phone = "0912345678",
                 Address = "Default Address",
                 Role = 1

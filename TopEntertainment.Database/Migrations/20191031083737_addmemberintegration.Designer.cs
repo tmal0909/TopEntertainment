@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TopEntertainment.Database;
 
 namespace TopEntertainment.Database.Migrations
 {
     [DbContext(typeof(TopEntertainmentContext))]
-    partial class TopEntertainmentContextModelSnapshot : ModelSnapshot
+    [Migration("20191031083737_addmemberintegration")]
+    partial class addmemberintegration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +75,7 @@ namespace TopEntertainment.Database.Migrations
                             Id = 1,
                             Account = "Dev",
                             Address = "Default Address",
-                            Birthday = new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Identity = "A123456789",
                             Name = "Developer",
                             Password = "Dev",
@@ -142,16 +144,16 @@ namespace TopEntertainment.Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Integration")
-                        .HasColumnType("decimal(12,4)");
-
-                    b.Property<int>("MemberId")
+                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("GiverId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("OperatorId")
+                    b.Property<int>("OperatorID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
                     b.Property<string>("TransactionId")
@@ -170,24 +172,31 @@ namespace TopEntertainment.Database.Migrations
 
                     b.HasAlternateKey("TransactionId");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("GiverId");
 
-                    b.HasIndex("OperatorId");
+                    b.HasIndex("OperatorID");
+
+                    b.HasIndex("ReceiverId");
 
                     b.ToTable("TransferRecords");
                 });
 
             modelBuilder.Entity("TopEntertainment.Database.Entity.TransferRecordEntity", b =>
                 {
-                    b.HasOne("TopEntertainment.Database.Entity.MemberEntity", "Member")
-                        .WithMany("TransferRecords")
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("TopEntertainment.Database.Entity.MemberEntity", "Giver")
+                        .WithMany("GiverTransferRecords")
+                        .HasForeignKey("GiverId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("TopEntertainment.Database.Entity.AdministratorEntity", "Operator")
                         .WithMany("TransferRecord")
-                        .HasForeignKey("OperatorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OperatorID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TopEntertainment.Database.Entity.MemberEntity", "Receiver")
+                        .WithMany("ReceiverTransferRecords")
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
