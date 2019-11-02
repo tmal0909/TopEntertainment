@@ -12,7 +12,7 @@ namespace TopEntertainment.Database
 
         public DbSet<MemberEntity> Members { get; set; }
 
-        public DbSet<TransferRecordEntity> TransferRecords { get; set; }
+        public DbSet<TransactionRecordEntity> TransactionRecords { get; set; }
 
         #endregion
 
@@ -29,21 +29,21 @@ namespace TopEntertainment.Database
             // Key
             modelBuilder.Entity<AdministratorEntity>().HasKey(x => x.Id);
             modelBuilder.Entity<MemberEntity>().HasKey(x => x.Id);
-            modelBuilder.Entity<TransferRecordEntity>().HasKey(x => x.Id);
+            modelBuilder.Entity<TransactionRecordEntity>().HasKey(x => x.Id);
 
             // Alternate Key
             modelBuilder.Entity<AdministratorEntity>().HasAlternateKey(x => new { x.Identity });
             modelBuilder.Entity<MemberEntity>().HasAlternateKey(x => new { x.Identity });
-            modelBuilder.Entity<TransferRecordEntity>().HasAlternateKey(x => new { x.TransactionId });
+            modelBuilder.Entity<TransactionRecordEntity>().HasAlternateKey(x => new { x.TransactionId });
 
             // Default Value
             modelBuilder.Entity<AdministratorEntity>().Property(x => x.UtcUpdateTime).HasDefaultValueSql("getutcdate()");
             modelBuilder.Entity<MemberEntity>().Property(x => x.UtcUpdateTime).HasDefaultValueSql("getutcdate()");
-            modelBuilder.Entity<TransferRecordEntity>().Property(x => x.UtcUpdateTime).HasDefaultValueSql("getutcdate()");
+            modelBuilder.Entity<TransactionRecordEntity>().Property(x => x.UtcUpdateTime).HasDefaultValueSql("getutcdate()");
 
             // Define Relation
-            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Member).WithMany(x => x.TransferRecords).HasForeignKey(x => x.MemberId);
-            modelBuilder.Entity<TransferRecordEntity>().HasOne(x => x.Operator).WithMany(x => x.TransferRecord).HasForeignKey(x => x.OperatorId);
+            modelBuilder.Entity<TransactionRecordEntity>().HasOne(x => x.Member).WithMany(x => x.TransactionRecords).HasForeignKey(x => x.MemberId);
+            modelBuilder.Entity<TransactionRecordEntity>().HasOne(x => x.Operator).WithMany(x => x.TransactionRecords).HasForeignKey(x => x.OperatorId);
 
             // Define Seed Data
             modelBuilder.Entity<AdministratorEntity>().HasData(new AdministratorEntity {

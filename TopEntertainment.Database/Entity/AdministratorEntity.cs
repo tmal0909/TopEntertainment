@@ -50,6 +50,6 @@ namespace TopEntertainment.Database.Entity
         [Column(TypeName = "datetime")]
         public DateTime UtcUpdateTime { get; set; }
 
-        public List<TransferRecordEntity> TransferRecord { get; set; }
+        public List<TransactionRecordEntity> TransactionRecords { get; set; }
     }
 }

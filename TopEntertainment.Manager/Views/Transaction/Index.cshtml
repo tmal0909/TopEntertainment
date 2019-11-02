@@ -1,9 +1,9 @@
-﻿@model IEnumerable<TransferRecordEntity>
+﻿@model IEnumerable<TransactionRecordEntity>
 
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">轉換紀錄</li>
+            <li class="breadcrumb-item active" aria-current="page">交易紀錄</li>
         </ol>
     </nav>
 </div>
@@ -39,9 +39,9 @@
 </div>
 
 @functions{
-    public string GetTypeName(TransferTypeEnum type)
+    public string GetTypeName(TransactionTypeEnum type)
     {
-        return EnumHelper<TransferTypeEnum>.GetDisplayValue(type);
+        return EnumHelper<TransactionTypeEnum>.GetDisplayValue(type);
     }
 }
 

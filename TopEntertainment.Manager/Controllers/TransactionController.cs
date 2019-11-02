@@ -22,7 +22,7 @@ namespace TopEntertainment.Manager.Controllers
 
         public IActionResult Index(int memberId = -1)
         {
-            var data = _context.TransferRecords
+            var data = _context.TransactionRecords
                 .Include(x => x.Member)
                 .Include(x => x.Operator)
                 .AsNoTracking();
@@ -71,17 +71,17 @@ namespace TopEntertainment.Manager.Controllers
                 member.Integration += metaData.DealIntegration;
 
                 _context.Entry(member).State = EntityState.Modified;
-                _context.TransferRecords.Add(new TransferRecordEntity
+                _context.TransactionRecords.Add(new TransactionRecordEntity
                 {
                     TransactionId = Guid.NewGuid().ToString(),
-                    Type = TransferTypeEnum.Recharge,
+                    Type = TransactionTypeEnum.Recharge,
                     Integration = metaData.DealIntegration,
                     MemberId = metaData.MemberId,
                     OperatorId = _context.Administrators.First().Id
                 });
 
                 if (_context.SaveChanges() <= 0)
-                    throw new Exception($"無法新增轉換紀錄");
+                    throw new Exception($"無法新增交易紀錄");
             }
             catch (Exception ex)
             {
@@ -131,17 +131,17 @@ namespace TopEntertainment.Manager.Controllers
                 member.Integration += metaData.DealIntegration;
 
                 _context.Entry(member).State = EntityState.Modified;
-                _context.TransferRecords.Add(new TransferRecordEntity
+                _context.TransactionRecords.Add(new TransactionRecordEntity
                 {
                     TransactionId = Guid.NewGuid().ToString(),
-                    Type = TransferTypeEnum.Exchange,
+                    Type = TransactionTypeEnum.Exchange,
                     Integration = metaData.DealIntegration,
                     MemberId = metaData.MemberId,
                     OperatorId = _context.Administrators.First().Id
                 });
 
                 if (_context.SaveChanges() <= 0)
-                    throw new Exception($"無法新增轉換紀錄");
+                    throw new Exception($"無法新增交易紀錄");
             }
             catch (Exception ex)
             {

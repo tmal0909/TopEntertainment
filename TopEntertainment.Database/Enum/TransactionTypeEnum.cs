@@ -2,7 +2,7 @@
 
 namespace TopEntertainment.Database.Enum
 {
-    public enum TransferTypeEnum
+    public enum TransactionTypeEnum
     {
         [Display(Name = "充值")]
         Recharge,

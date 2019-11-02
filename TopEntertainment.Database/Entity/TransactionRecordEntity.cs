@@ -5,7 +5,7 @@ using TopEntertainment.Database.Enum;
 
 namespace TopEntertainment.Database.Entity
 {
-    public class TransferRecordEntity
+    public class TransactionRecordEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace TopEntertainment.Database.Entity
 
         [Required]
         [Column(TypeName = "smallint")]
-        public TransferTypeEnum Type { get; set; }
+        public TransactionTypeEnum Type { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(12,4)")]
@@ -29,7 +29,7 @@ namespace TopEntertainment.Database.Entity
         public string Note { get; set; }
 
         [Required]
-        [Column(TypeName ="int")]
+        [Column(TypeName = "int")]
         public int MemberId { get; set; }
 
         [Required]
