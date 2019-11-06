@@ -28,11 +28,12 @@
 </head>
 <body>
     <div class="common-background">
-        <div class="container-fluid">
+        <div class="container-fluid h-100"> 
         
-            <div class="row">
-        
-                    <div class="col-4 common-overlay">
+            <div class="row h-100">
+               
+                <div class="col-sm-12 col-md-12 col-lg-4  text-center common-overlay login-flex">
+                    <div class="login-group">
                         <img class="common-logo" src="~/images/logo.jpg" />
 
                         <form class="login-form" asp-controller="Home" asp-action="Login" method="post">
@@ -55,11 +56,11 @@
                             </div>
 
                             <div>
-                                <input type="submit" value="送出" />
+                                <input class="submit" type="submit" value="送出" />
                             </div>
                         </form>
                     </div>
-          
+                </div>
             </div>
         </div>
 
