@@ -28,33 +28,42 @@
 </head>
 <body>
     <div class="common-background">
-        <div class="common-overlay">
-            <img class="common-logo" src="~/images/logo.jpg"/>
+        <div class="container-fluid">
+        
+            <div class="row">
+        
+                    <div class="col-4 common-overlay">
+                        <img class="common-logo" src="~/images/logo.jpg" />
 
-            <form class="login-form" asp-controller="Home" asp-action="Login" method="post">
-                <div>
-                    <input asp-for="Account" />
-                    <div>
-                        <span class="text-danger" asp-validation-for="Account"></span>
+                        <form class="login-form" asp-controller="Home" asp-action="Login" method="post">
+                            <div>
+                                <input asp-for="Account" />
+                                <div>
+                                    <span class="text-danger" asp-validation-for="Account"></span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input asp-for="Password" />
+                                <div>
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="text-danger">@ViewBag.ErrorMessage</span>
+                            </div>
+
+                            <div>
+                                <input type="submit" value="送出" />
+                            </div>
+                        </form>
                     </div>
-                </div>
-
-                <div>
-                    <input asp-for="Password" />
-                    <div>
-                        <span class="text-danger" asp-validation-for="Password"></span>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="text-danger">@ViewBag.ErrorMessage</span>
-                </div>
-
-                <div>
-                    <input type="submit" value="送出"/>
-                </div>
-            </form>
+          
+            </div>
         </div>
+
+       
     </div>
 </body>
 </html>
