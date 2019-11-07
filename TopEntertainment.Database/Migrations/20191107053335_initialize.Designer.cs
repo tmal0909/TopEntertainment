@@ -10,8 +10,8 @@ using TopEntertainment.Database;
 namespace TopEntertainment.Database.Migrations
 {
     [DbContext(typeof(TopEntertainmentContext))]
-    [Migration("20191102053558_addtransactionrecord")]
-    partial class addtransactionrecord
+    [Migration("20191107053335_initialize")]
+    partial class initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -31,6 +31,10 @@ namespace TopEntertainment.Database
             modelBuilder.Entity<MemberEntity>().HasKey(x => x.Id);
             modelBuilder.Entity<TransactionRecordEntity>().HasKey(x => x.Id);
 
+            // Generate On Add
+            modelBuilder.Entity<AdministratorEntity>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<MemberEntity>().Property(x => x.Id).ValueGeneratedOnAdd();
+
             // Alternate Key
             modelBuilder.Entity<AdministratorEntity>().HasAlternateKey(x => new { x.Identity });
             modelBuilder.Entity<MemberEntity>().HasAlternateKey(x => new { x.Identity });

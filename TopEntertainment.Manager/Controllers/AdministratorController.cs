@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TopEntertainment.Database;
@@ -30,6 +31,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(AdministratorMD metaData)
         {
             _context.Administrators.Add(metaData.ToEntity());
@@ -57,6 +59,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(AdministratorMD metaData)
         {
             var entity = metaData.ToEntity();
@@ -86,6 +89,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(AdministratorMD metaData)
         {
             _context.Administrators.Remove(metaData.ToEntity());

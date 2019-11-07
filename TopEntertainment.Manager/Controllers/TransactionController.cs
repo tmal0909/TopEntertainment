@@ -56,6 +56,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Recharge(RechargeMD metaData)
         {
             try
@@ -116,6 +117,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Exchange(ExchangeMD metaData)
         {
             try
@@ -128,7 +130,7 @@ namespace TopEntertainment.Manager.Controllers
                 if (metaData.DealIntegration <= 0)
                     throw new Exception($"提交金額錯誤");
 
-                member.Integration += metaData.DealIntegration;
+                member.Integration -= metaData.DealIntegration;
 
                 _context.Entry(member).State = EntityState.Modified;
                 _context.TransactionRecords.Add(new TransactionRecordEntity

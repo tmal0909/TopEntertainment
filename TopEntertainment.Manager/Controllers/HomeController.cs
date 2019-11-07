@@ -18,13 +18,14 @@ namespace TopEntertainment.Manager.Controllers
 
         public IActionResult Login()
         {
-            var data = new AdministratorMD();
+            var data = new LoginMD();
 
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult Login(AdministratorMD metaData)
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(LoginMD metaData)
         {
             if (string.IsNullOrEmpty(metaData.Account))
             {

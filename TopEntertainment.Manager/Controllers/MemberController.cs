@@ -30,6 +30,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(MemberMD metaData)
         {
             _context.Members.Add(metaData.ToEntity());
@@ -57,6 +58,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(MemberMD metaData)
         {
             var entity = metaData.ToEntity();
@@ -86,6 +88,7 @@ namespace TopEntertainment.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(MemberMD metaData)
         {
             _context.Members.Remove(metaData.ToEntity());
