@@ -27,6 +27,8 @@ namespace TopEntertainment.Manager.Controllers
         {
             var data = new AdministratorMD();
 
+            ModelState.Clear();
+
             return View(data);
         }
 
