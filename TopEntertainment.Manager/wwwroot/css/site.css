@@ -12,16 +12,25 @@ html, body {
 }
 
 header {
-    background: linear-gradient(45deg, black, #696060de);
-    color: #ceefed;
+    background: #000;
+    color: #fff;
     font-weight: 900;
     font-size: 15px;
     padding: 8px 30px;
 }
 
+    header a {
+        line-height: 60px;
+    }
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+}
+
 footer {
     background: linear-gradient(45deg, #696060de, black);
-    color: #ceefed;
+    color: #fff;
     text-align: center;
     font-weight: 900;
     font-size: 15px;
@@ -40,8 +49,8 @@ footer {
 }
 
 .common-overlay {
-    background-color: rgba(0, 0, 0, 1);
-    text-align: center;
+    background: url(../images/poke.png) bottom no-repeat,linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1));
+    background-size: contain;
 }
 
 .common-logo {
@@ -62,24 +71,26 @@ footer {
 }
 
 
-.login-group input {
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    margin: 1rem;
-    padding: 0.5rem 1rem;
-    width: 50%;
-}
+    .login-group input {
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        width: 50%;
+        color: #ffffff;
+    }
 
 
 input.submit {
     margin: 2rem;
     background: rgba(255, 255, 0, 1);
+    color: #000;
 }
 
 /* Main */
 .main-frame {
-    height: calc(100% - 76px);
+    height: calc(100% - 114px);
 }
 
     .main-frame aside {
@@ -87,6 +98,7 @@ input.submit {
         height: 100%;
         float: left;
         padding: 10px;
+        background: #f1f1f1;
     }
 
         .main-frame aside .accordion {
@@ -123,3 +135,11 @@ input.submit {
     .dataTables_button .icon-create {
         font-size: 23px;
     }
+
+/*RWD */
+@media screen and (min-width: 991px) {
+    .common-overlay {
+        background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1));
+        background-size: contain;
+    }
+}
