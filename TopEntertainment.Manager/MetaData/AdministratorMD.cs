@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TopEntertainment.Database.Entity;
+using TopEntertainment.Database.Enum;
+using TopEntertainment.Extension;
 
 namespace TopEntertainment.Manager.MetaData
 {
@@ -31,6 +35,10 @@ namespace TopEntertainment.Manager.MetaData
         [Display(Name = "姓名", Prompt = "請輸入姓名")]
         public string Name { get; set; }
 
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "請輸入出生日期")]
+        [Display(Name = "出生日期", Prompt = "請選擇出生日期")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Birthday { get; set; }
 
         [Required(ErrorMessage = "請輸入電話")]
@@ -43,24 +51,17 @@ namespace TopEntertainment.Manager.MetaData
         [Display(Name = "地址", Prompt = "請輸入地址")]
         public string Address { get; set; }
 
-        public int Role { get; set; }
+        [Required(ErrorMessage = "請選擇帳號狀態")]
+        [Display(Name = "帳號狀態", Prompt = "請選擇帳號狀態")]
+        public AccountStatusTypeEnum Status { get; set; }
 
-        
-        public static AdministratorMD ToMetaData(AdministratorEntity entity)
+        public List<SelectListItem> StatusOptions { get; set; }
+
+
+        public AdministratorMD()
         {
-            return new AdministratorMD
-            {
-                Id = entity.Id,
-                Account = entity.Account,
-                Password = entity.Password,
-                Identity = entity.Identity,
-                Name = entity.Name,
-                Birthday = entity.Birthday,
-                Phone = entity.Phone,
-                Address = entity.Address,
-                Role = entity.Role
-            };
-        } 
+            StatusOptions = GetOptions();
+        }
 
         public AdministratorEntity ToEntity()
         {
@@ -74,7 +75,34 @@ namespace TopEntertainment.Manager.MetaData
                 Birthday = DateTime.UtcNow.AddHours(8),
                 Phone = this.Phone,
                 Address = this.Address,
-                Role = this.Role
+                Status = this.Status
+            };
+        }
+        
+        public static AdministratorMD ToMetaData(AdministratorEntity entity)
+        {
+            return new AdministratorMD
+            {
+                Id = entity.Id,
+                Account = entity.Account,
+                Password = entity.Password,
+                Identity = entity.Identity,
+                Name = entity.Name,
+                Birthday = entity.Birthday,
+                Phone = entity.Phone,
+                Address = entity.Address,
+                Status = entity.Status,
+                StatusOptions = GetOptions()
+            };
+        }
+
+        public static List<SelectListItem> GetOptions()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem { Text = EnumHelper<AccountStatusTypeEnum>.GetDisplayValue(AccountStatusTypeEnum.Normal), Value = AccountStatusTypeEnum.Normal.ToString() },
+                new SelectListItem { Text = EnumHelper<AccountStatusTypeEnum>.GetDisplayValue(AccountStatusTypeEnum.Forbidden), Value = AccountStatusTypeEnum.Forbidden.ToString() },
+                new SelectListItem { Text = EnumHelper<AccountStatusTypeEnum>.GetDisplayValue(AccountStatusTypeEnum.Delete), Value = AccountStatusTypeEnum.Delete.ToString() },
             };
         }
     }

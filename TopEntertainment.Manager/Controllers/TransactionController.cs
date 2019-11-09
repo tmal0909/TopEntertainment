@@ -66,6 +66,9 @@ namespace TopEntertainment.Manager.Controllers
                 if (member == null)
                     throw new Exception($"無該會員資料");
 
+                if (member.Status != AccountStatusTypeEnum.Normal)
+                    throw new Exception($"該會員帳號狀態異常");
+
                 if (metaData.DealIntegration <= 0)
                     throw new Exception($"提交金額錯誤");
 
@@ -75,7 +78,7 @@ namespace TopEntertainment.Manager.Controllers
                 _context.TransactionRecords.Add(new TransactionRecordEntity
                 {
                     TransactionId = Guid.NewGuid().ToString(),
-                    Type = TransactionTypeEnum.Recharge,
+                    Type = TransactionTypeEnum.OnSite_CashRecharge,
                     Integration = metaData.DealIntegration,
                     MemberId = metaData.MemberId,
                     OperatorId = _context.Administrators.First().Id
@@ -127,6 +130,9 @@ namespace TopEntertainment.Manager.Controllers
                 if (member == null)
                     throw new Exception($"無該會員資料");
 
+                if (member.Status != AccountStatusTypeEnum.Normal)
+                    throw new Exception($"該會員帳號狀態異常");
+
                 if (metaData.DealIntegration <= 0)
                     throw new Exception($"提交金額錯誤");
 
@@ -136,7 +142,7 @@ namespace TopEntertainment.Manager.Controllers
                 _context.TransactionRecords.Add(new TransactionRecordEntity
                 {
                     TransactionId = Guid.NewGuid().ToString(),
-                    Type = TransactionTypeEnum.Exchange,
+                    Type = TransactionTypeEnum.OnSite_ChipExchange,
                     Integration = metaData.DealIntegration,
                     MemberId = metaData.MemberId,
                     OperatorId = _context.Administrators.First().Id

@@ -32,3 +32,16 @@ function initDataTable($table, createUrl) {
         $('.dataTables_button').html(element);
     }
 }
+
+// Date Picker 初始化
+function initDatePicker($dateInput) {
+    $dateInput.datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        startDate: '2019-01-01',
+        enableOnReadonly: false,
+        calendarWeeks: false,
+        todayHighlight: true,
+        language: 'zh-TW'
+    });
+}

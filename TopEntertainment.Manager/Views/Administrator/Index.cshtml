@@ -16,6 +16,7 @@
                 <th>姓名</th>
                 <th>電話</th>
                 <th>地址</th>
+                <th>狀態</th>
                 <th>更新時間</th>
                 <th>操作</th>
             </tr>
@@ -28,17 +29,24 @@
                     <td>@item.Name</td>
                     <td>@item.Phone</td>
                     <td>@item.Address</td>
+                    <td>@GetStatusTypeName(item.Status)</td>
                     <td>@item.UtcUpdateTime.AddHours(8).ToString("yyyy/MM/dd hh:mm:ss")</td>
                     <td>
                         <a class="icon-update" asp-controller="Administrator" asp-action="Update" asp-route-id="@item.Id" title="編輯"></a>
                         <a class="icon-delete" asp-controller="Administrator" asp-action="Delete" asp-route-id="@item.Id" title="刪除"></a>
-                        @*<a class="icon-detail" asp-controller="Administrator" asp-action="Detail" asp-route-id="@item.Id" title="詳細資料"></a>*@
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+
+@functions{
+    public string GetStatusTypeName(AccountStatusTypeEnum type)
+    {
+        return EnumHelper<AccountStatusTypeEnum>.GetDisplayValue(type);
+    }
+}
 
 @section Scripts{
     <script>

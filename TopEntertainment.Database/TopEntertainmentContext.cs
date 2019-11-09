@@ -53,14 +53,14 @@ namespace TopEntertainment.Database
             // Define Seed Data
             modelBuilder.Entity<AdministratorEntity>().HasData(new AdministratorEntity {
                 Id = 1,
-                Account = "Dev",
-                Password = "Dev",
-                Identity = "A123456789",
+                Account = "Developer",
+                Password = "1234",
+                Identity = "A111111111",
                 Name = "Developer",
                 Birthday = new DateTime(2019, 1, 1),
                 Phone = "0912345678",
                 Address = "Default Address",
-                Status = AccountStatusEnum.Normal
+                Status = AccountStatusTypeEnum.Normal
             });
         }
 

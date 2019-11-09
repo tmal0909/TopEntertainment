@@ -9,6 +9,7 @@ html, body {
     font-size: 14px;
     margin: 0px;
     padding: 0px;
+    overflow: auto;
 }
 
 header {
@@ -126,6 +127,9 @@ input.submit {
     font-size: 1rem;
 }
 
+.nav-item{
+    margin : 2px;
+}
 
 /* DataTable */
 .dataTables_button {

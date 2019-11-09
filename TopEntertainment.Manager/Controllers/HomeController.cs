@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TopEntertainment.Database;
+using TopEntertainment.Database.Enum;
 using TopEntertainment.Manager.MetaData;
 
 namespace TopEntertainment.Manager.Controllers
@@ -19,6 +20,8 @@ namespace TopEntertainment.Manager.Controllers
         public IActionResult Login()
         {
             var data = new LoginMD();
+
+            ModelState.Clear();
 
             return View(data);
         }
@@ -52,6 +55,13 @@ namespace TopEntertainment.Manager.Controllers
             if (!administrator.Password.Equals(metaData.Password))
             {
                 ViewBag.ErrorMessage = $"密碼錯誤";
+
+                return View(metaData);
+            }
+
+            if (administrator.Status != AccountStatusTypeEnum.Normal)
+            {
+                ViewBag.ErrorMessage = $"帳號狀態異常";
 
                 return View(metaData);
             }

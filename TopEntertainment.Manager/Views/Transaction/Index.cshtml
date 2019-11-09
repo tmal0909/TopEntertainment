@@ -28,7 +28,7 @@
                     <td>@item.TransactionId</td>
                     <td>@item.Member.Account</td>
                     <td>@item.Integration.ToString("F0")</td>
-                    <td>@GetTypeName(item.Type)</td>
+                    <td>@GetTransactionTypeName(item.Type)</td>
                     <td>@item.Note</td>
                     <td>@item.UtcUpdateTime.AddHours(8).ToString("yyyy/MM/dd hh:mm:ss")</td>
                     <td>@item.Operator.Account</td>
@@ -39,7 +39,7 @@
 </div>
 
 @functions{
-    public string GetTypeName(TransactionTypeEnum type)
+    public string GetTransactionTypeName(TransactionTypeEnum type)
     {
         return EnumHelper<TransactionTypeEnum>.GetDisplayValue(type);
     }

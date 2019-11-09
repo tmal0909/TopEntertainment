@@ -44,7 +44,7 @@ namespace TopEntertainment.Database.Entity
 
         [Required]
         [Column(TypeName = "smallint")]
-        public AccountStatusEnum Status { get; set; }
+        public AccountStatusTypeEnum Status { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Required]

@@ -2,7 +2,7 @@
 
 namespace TopEntertainment.Database.Enum
 {
-    public enum AccountStatusEnum
+    public enum AccountStatusTypeEnum
     {
         [Display(Name = "刪除")]
         Delete = -1,

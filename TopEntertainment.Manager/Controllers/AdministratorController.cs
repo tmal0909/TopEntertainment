@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TopEntertainment.Database;
+using TopEntertainment.Database.Enum;
 using TopEntertainment.Manager.MetaData;
 
 namespace TopEntertainment.Manager.Controllers
@@ -94,7 +95,11 @@ namespace TopEntertainment.Manager.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(AdministratorMD metaData)
         {
-            _context.Administrators.Remove(metaData.ToEntity());
+            var entity = metaData.ToEntity();
+
+            entity.Status = AccountStatusTypeEnum.Delete;
+
+            _context.Entry(entity).State = EntityState.Modified;
 
             if (_context.SaveChanges() <= 0)
             {
