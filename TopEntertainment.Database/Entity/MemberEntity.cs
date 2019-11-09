@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TopEntertainment.Database.Enum;
 
 namespace TopEntertainment.Database.Entity
 {
@@ -47,7 +48,7 @@ namespace TopEntertainment.Database.Entity
 
         [Required]
         [Column(TypeName = "smallint")]
-        public int Role { get; set; }
+        public AccountStatusEnum Status { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Required]

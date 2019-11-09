@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using TopEntertainment.Database.Entity;
+using TopEntertainment.Database.Enum;
 
 namespace TopEntertainment.Database
 {
@@ -59,7 +60,7 @@ namespace TopEntertainment.Database
                 Birthday = new DateTime(2019, 1, 1),
                 Phone = "0912345678",
                 Address = "Default Address",
-                Role = 1
+                Status = AccountStatusEnum.Normal
             });
         }
 
