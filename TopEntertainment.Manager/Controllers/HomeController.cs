@@ -69,6 +69,11 @@ namespace TopEntertainment.Manager.Controllers
             return RedirectToAction("Index", "Member");
         }
 
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Login", "Home");
+        }
+
         public IActionResult Error(string message = "")
         {
             ViewBag.ErrorMessage = message;
